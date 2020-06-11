@@ -1,0 +1,93 @@
+
+
+    <div class="sidebar">
+      <div class="sidebar-wrapper">
+        
+        <div class="logo">
+          <a target="_blank" href="" class="simple-text logo-mini">
+            BD
+          </a>
+          <a target="_blank" href="" class="simple-text logo-normal">
+            RRHH
+          </a>
+        </div>
+
+        {% if user.is_authenticated %}
+        <ul class="nav">
+          <li class="active ">
+            <a href="/">
+              <i class="tim-icons icon-chart-pie-36"></i>
+              <p>Lista de Entrevistas</p>
+            </a>
+          </li>
+          {% if request.user.is_staff%}
+            <li>
+              <a href="/main_form">
+                <i class="tim-icons icon-atom"></i>
+                <p>Registrar Aspirantes</p>
+              </a> 
+            </li>
+            <li>
+              <a href="/addint_form">
+                <i class="tim-icons icon-atom"></i>
+                <p>Registrar Entrevistas</p>
+              </a> 
+            </li>
+          {% endif%}
+          <li>
+            <a href="/int_main_form">
+              <i class="tim-icons icon-pin"></i>
+              <p>Realizar Entrevista</p>
+            </a>
+          </li>
+          <!--li>
+            <a href="/ui-notifications.html">
+              <i class="tim-icons icon-bell-55"></i>
+              <p>Notifications</p>
+            </a>
+          </li>
+          <li>
+            <a href="/page-user.html">
+              <i class="tim-icons icon-single-02"></i>
+              <p>User Profile</p>
+            </a>
+          </li>
+          {% if request.user.is_staff %}
+          <li>
+            <a href="/list">
+              <i class="tim-icons icon-puzzle-10"></i>
+              <p>Employee List</p>
+            </a>
+          </li-->
+        {%endif%}
+          <li>
+            <a href="/int_list">
+              <i class="tim-icons icon-align-center"></i>
+              <p>Entrevistas</p>
+            </a>
+          </li>
+
+          <!--li>
+            <a href="/page-rtl-support.html">
+              <i class="tim-icons icon-world"></i>
+              <p>RTL Support</p>
+            </a>
+          </li>
+          <li>
+            <a href="{% url 'logout' %}" >
+              <i class="tim-icons icon-user-run"></i>
+              <p>Logout</p>
+            </a>
+          </li>
+
+          <li class="active-pro">
+            <a target="_blank" href="https://appseed.us/admin-dashboards/django-dashboard-black">
+              <i class="tim-icons icon-spaceship"></i>
+              <p>See product</p>
+            </a>
+          </li>
+        </ul-->
+        {% endif %}
+        
+      </div>
+    </div>

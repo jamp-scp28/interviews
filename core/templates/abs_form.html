@@ -1,0 +1,65 @@
+{% extends 'layouts/base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block title %} Page User {% endblock %} 
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}
+
+
+{% endblock stylesheets %}
+
+{% block content %}
+
+<div class="row">
+  <div class="col-md-8">
+    <div class="card">
+      <div class="card-header">
+        <h5 class="title text-center">Formato de Entrevista</h5>
+      </div>
+      <div class="card-body">
+      
+      
+        <form role="form" method="post" action="">
+        {% csrf_token %}
+            {%if form.errors %}
+                <p class="text-danger">{{ form.errors }}</p>
+            {% endif %}  
+        <div class="row justify-content-md-center">
+
+            <div  class="md-center col-md-8 pr-md-1 ">
+                {{form.as_p}}
+            </div>
+
+            
+            
+        </div>
+    
+        <div class="justify-content-md-center md-4 ">
+            <button type="submit" class="btn btn-success btn-block btn-lg"><i class="fas fa-database"></i>
+                Registrar</button>
+        </div>
+        </form>
+      
+    </div>
+    </div>
+</div>
+</div>
+
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+
+<script>
+    $(document).ready(function() {
+    $('#selectemp').select2({ placeholder: "Select here", maximumSelectionSize: 100  });
+    $( "#datepicker" ).datetimepicker({format:'Y-m-d H:m:s'});
+    $( "#datepicker2" ).datetimepicker();
+    });
+    
+</script>
+
+{% endblock javascripts %}
