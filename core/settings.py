@@ -34,7 +34,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'app',  # Enable the inner app 
-    'crispy_forms',
     'import_export',
     'interview',
     'django_filters',
