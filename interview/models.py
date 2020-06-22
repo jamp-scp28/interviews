@@ -1,5 +1,6 @@
 from django.db import models
 from employee.models import Employee
+from django.contrib.auth.models import User
 
 class Interviewer(models.Model):
     name = models.CharField(null=True, blank=True,max_length=50,default="0")
@@ -86,4 +87,4 @@ class Interview(models.Model):
 
     ove_result = models.ForeignKey(Ove_result,on_delete=models.CASCADE,default=0)
     recomendation = models.ForeignKey(Recomendation,on_delete=models.CASCADE,default=0)
-
+    toUser = models.ForeignKey(User,on_delete=models.CASCADE,default=0)     

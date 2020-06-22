@@ -14,7 +14,11 @@ from django.db.models import Sum, Count
 
 @login_required(login_url="/login/")
 def addint_list(request):
-    context = {'addint_list': AddInt.objects.all()}
+    if request.user.is_superuser:
+        qs = AddInt.objects.all()
+    else:
+        qs = AddInt.objects.filter(interviewer=request.user)
+    context = {'addint_list': qs}
     return render(request, "index.html", context)
 
 @login_required(login_url="/login/")

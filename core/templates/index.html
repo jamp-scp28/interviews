@@ -25,6 +25,15 @@
                   IDENTIFICACION
                 </th>
                 <th>
+                  TELEFONO
+                </th>
+                <th>
+                  EMAIL
+                </th>
+                <th>
+                  PROGRAMA
+                </th>
+                <th>
                   FECHA ENTREVISTA
                 </th>
                 <th>
@@ -43,6 +52,9 @@
                     <tr>
                         <td>{{int.employee.fullname}}</td>
                         <td>{{int.employee.identification}}</td>
+                        <td>{{int.employee.mobile}}</td>
+                        <td>{{int.employee.email}}</td>
+                        <td>{{int.employee.jobname}}</td>
                         <td>{{int.dated}}</td>
                         {% if int.interviewed%}
                           <td>
@@ -70,7 +82,7 @@
                               </a>
                           </td>
                         {% endif %}
-
+                        {% if request.user.is_staff %}
                         <td>
                             <form action="{% url 'addint_delete' int.id %}" method="post" class="d-inline">
                                 {% csrf_token %}
@@ -79,6 +91,7 @@
                                 </button>
                             </form>
                         </td>
+                        {% endif %}
                     </tr>
                 {% endfor %}
             </tbody>

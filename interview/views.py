@@ -11,27 +11,30 @@ from django import template
 from employee.models import Employee
 from django.forms.models import model_to_dict
 from django.db.models import Sum, Count
+from django.contrib.contenttypes.models import ContentType
+
+
+# @login_required(login_url="/login/")
+# class int_list(self, request):
+#     """Generic class-based view listing books on loan to current user."""
+#     model = Interview
+#     template_name ='ui-tables-abs.html'
+#     paginate_by = 10
+    
+#     def get_queryset(self):
+#         return Interview.objects.filter(toUser=self.request.user)
+
 
 @login_required(login_url="/login/")
 def int_list(request):
-    # labels = []
-    # data = []
-    # data2 = []
-    #abs_data = Interview.objects.values('leaveconcept__leaveconcept').annotate(Sum('days'))
-    #abs_data2 = Interview.objects.values('leaveconcept__leaveconcept').annotate(Count('employee'))
-    # print(abs_data)
-    # print(abs_data2)
-
-    # for abs in abs_data:
-    #     labels.append(abs['leaveconcept__leaveconcept'])
-    #     data.append(abs['days__sum'])
-
-    # for abs2 in abs_data2:
-    #     data2.append(abs2['employee__count'])
-
-
-    context = {'int_list': Interview.objects.all()}
+    if request.user.is_superuser:
+        created_by_user = Interview.objects.all()
+    else:
+        created_by_user = Interview.objects.filter(toUser=request.user)
+    context = {'int_list': created_by_user}
+    
     return render(request, "ui-tables-abs.html", context)
+
 
 @login_required(login_url="/login/")
 def int_form(request, id=0):
