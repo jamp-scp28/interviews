@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'interview',
     'django_filters',
     'employee',
-    'addint'
+    'addint',
+    'evaluation'
 ]
 
 MIDDLEWARE = [
@@ -114,10 +115,6 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
-from django.conf.locale.en import formats as en_formats
-en_formats.DATETIME_FORMAT = "d b Y H:i:s"
-
-#es_formats.DATETIME_FORMAT = "%Y/%m/%d %H:%M"
 
 LANGUAGE_CODE = 'en-us'
 
@@ -125,7 +122,7 @@ TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
-USE_L10N = False
+USE_L10N = True
 
 USE_TZ = True
 
@@ -134,12 +131,13 @@ USE_TZ = True
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), "media")
 # Extra places for collectstatic to find static files.
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'core/static'),
