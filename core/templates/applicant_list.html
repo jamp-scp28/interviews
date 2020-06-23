@@ -100,7 +100,7 @@
   <div class="col-md-12">
     <div class="card ">
       <div class="card-header">
-        <h4 class="card-title">Registro de Entrevistas</h4>
+        <h4 class="card-title">Registro de Pruebas</h4>
       </div>
       <div class="card-body">
         <div class="table-responsive">
@@ -114,24 +114,26 @@
                   IDENTIFICACION
                 </th>
                 <th>
-                  PROGRAMA
+                  FECHA DE CARGUE
                 </th>
                 <th>
-                  FECHA ENTREVISTA
-                </th>
-                <th>
-                  RECOMENDACION
-                </th>
-                <th>
-                  EDITAR / ELIMINAR
+                  LINK DE PRUEBA
                 </th>
               </tr>
             </thead>
             <tbody>
-                {% for int in addint_list %}
+                {% for appl in appl_list %}
                     <tr>
-                        <td>{{int.name}}</td>
-                        <td>{{int.cc}}</td>
+                        <td>{{appl.name}}</td>
+                        <td>{{appl.cc}}</td>
+                        <td>{{appl.created_at}}</td>
+                        {%if appl.document.url and appl.document.name%}
+                          <td>
+                            <a href="{{appl.document.url}}" class="btn text-secondary px-0">
+                              <i class="">{{appl.document.name}}</i>
+                            </a>
+                          </td>
+                        {%endif%}
                     </tr>
                 {% endfor %}
             </tbody>
@@ -147,9 +149,4 @@
 
 <!-- Specific Page JS goes HERE  -->
 {% block javascripts %}
-<script>
-$(document).ready(function(){
-})
-
-</script>
 {% endblock javascripts %}

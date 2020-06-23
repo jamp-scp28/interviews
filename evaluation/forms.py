@@ -3,18 +3,6 @@ from django import forms
 from django.contrib.admin.widgets import AdminDateWidget
 
 class ApplicantForm(forms.ModelForm):
-    name = forms.CharField(
-        widget=forms.TextInput(
-            attrs={  
-                "class": "form-control"
-            }
-        ))
-    cc = forms.IntegerField(
-        widget=forms.TextInput(
-            attrs={  
-                "class": "form-control"
-            }
-        ))
     class Meta:
         model = Applicant
         fields = ('name','cc','document')
@@ -26,5 +14,6 @@ class ApplicantForm(forms.ModelForm):
         
     def __init__(self, *args, **kwargs):
         super(ApplicantForm, self).__init__(*args, **kwargs)
+        self.fields['name'].widget.attrs.update({'class': 'form-control'})
+        self.fields['cc'].widget.attrs.update({'class': 'form-control'})
         self.fields['document'].widget.attrs.update({'type': 'file'})
-        self.fields['document'].required = False

@@ -1,5 +1,5 @@
 
-
+    {% load auth_extras %}
     <div class="sidebar">
       <div class="sidebar-wrapper">
         
@@ -13,13 +13,25 @@
         </div>
 
         {% if user.is_authenticated %}
+        
         <ul class="nav">
+          {% if request.user|has_group:"Aprendiz" %}
           <li class="active ">
             <a href="/appl_form">
               <i class="tim-icons icon-chart-pie-36"></i>
               <p>Prueba Técnica</p>
             </a>
           </li>
+          {% endif %}
+          {% if request.user|has_group:"Contabilidad" %}
+          <li class="active ">
+            <a href="/appl_list">
+              <i class="tim-icons icon-chart-pie-36"></i>
+              <p>Lista de Pruebas</p>
+            </a>
+          </li>
+          {% endif %}
+          {% if not request.user|has_group:"Aprendiz" %}
           <li class="active ">
             <a href="/">
               <i class="tim-icons icon-chart-pie-36"></i>
@@ -52,6 +64,7 @@
               <p>Entrevistas</p>
             </a>
           </li>
+        {% endif %}
         </ul>
         {% endif %}
         

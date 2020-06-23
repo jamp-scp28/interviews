@@ -14,6 +14,7 @@ from django.forms.utils import ErrorList
 from django.http import HttpResponse
 from .forms import LoginForm, SignUpForm
 
+
 def login_view(request):
     form = LoginForm(request.POST or None)
 
@@ -27,13 +28,20 @@ def login_view(request):
             user = authenticate(username=username, password=password)
             if user is not None:
                 login(request, user)
-                return redirect("/")
+                user_groups = request.user.groups.values_list('name', flat=True)
+                if request.user.is_superuser:
+                    return redirect("/")
+                elif "Aprendiz" in user_groups:
+                    return redirect("/appl_form/")
+                elif "User" in user_groups:
+                    return redirect("/")
             else:    
                 msg = 'Invalid credentials'    
         else:
             msg = 'Error validating the form'    
 
     return render(request, "accounts/login.html", {"form": form, "msg" : msg})
+
 
 def register_user(request):
 
@@ -56,7 +64,7 @@ def register_user(request):
             msg     = 'User created.'
             success = True
             
-            #return redirect("/login/")
+            # return redirect("/login/")
 
         else:
             msg = 'Form is not valid'    

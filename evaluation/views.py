@@ -12,48 +12,52 @@ from django import template
 from django.forms.models import model_to_dict
 from django.db.models import Sum, Count
 from django.core.files.storage import FileSystemStorage
+from django.http import HttpResponseRedirect
+
+
 
 @login_required(login_url="/login/")
 def appl_list(request):
-    if request.user.is_superuser:
-        qs = Applicant.objects.all()
-    else:
-        qs = Applicant.objects.filter(interviewer=request.user)
-    context = {'addint_list': qs}
+    # if request.user.is_superuser:
+    #     qs = Applicant.objects.all()
+    # else:
+    #     qs = Applicant.objects.filter(interviewer=request.user)
+    context = {'appl_list': Applicant.objects.all()}
     return render(request, "applicant_list.html", context)
 
 
 @login_required(login_url="/login/")
-def appl_form(request, id=0):
-    if request.method == "GET":
-        if id == 0:
-            form = ApplicantForm()
-        else:
-            addint = Applicant.objects.get(pk=id)
-            form = ApplicantForm(instance=addint)
-        return render(request, "addint_form.html", {'form': form})
-    else:
-        if id == 0:
-            form = ApplicantForm(request.POST, request.FILES)
-        else:
-            medicalexam = Applicant.objects.get(pk=id)
-            
-            form = ApplicantForm(request.POST, request.FILES, instance= medicalexam)
-
+def appl_form(request):
+    if request.POST and request.FILES['document']:
+        form = ApplicantForm(request.POST, request.FILES or None)
         if form.is_valid():
-            form.save()
-        return redirect('/')
-    # else:
-    #     if id == 0:
-    #         form = ApplicantForm(request.POST, request.FILES)
-    #     else:
-    #         addint = Applicant.objects.get(pk=id)
-    #         upload_file = request.FILES['document']
-    #         fs = FileSystemStorage()
-    #         fs.save(upload_file.name,upload_file)
-    #         form = ApplicantForm(request.POST,request.FILES, instance= addint)
-    #     #if form.is_valid():
-    #         form.save()
-    #     return redirect('/')
-    #     #else:
-    #     #    return render(request,"applicantForm.html",{'form':form})
+            edit = form.save(commit=False)
+            edit.save()
+            return HttpResponse('Registro Completo')
+        else:
+            return render(request, "applicantForm.html", {'form': form})
+    else:
+        form = ApplicantForm()
+    return render(request, 'applicantForm.html', {'form': form})
+
+# def appl_form(request, id=0):
+#     if request.method == "GET":
+#         if id == 0:
+#             form = ApplicantForm()
+#         else:
+#             addint = Applicant.objects.get(pk=id)
+#             form = ApplicantForm(instance=addint)
+#         return render(request, "addint_form.html", {'form': form})
+#     else:
+#         if id == 0:
+#             form = ApplicantForm(request.POST, request.FILES)
+#         else:
+#             addint = Applicant.objects.get(pk=id)
+#             form = ApplicantForm(request.POST,request.FILES, instance= addint)
+#         if form.is_valid():
+#             newdoc = ApplicantForm(docfile = request.FILES['document'])
+#             newdoc.save()
+#             form.save()
+#             return redirect('/')
+#         else:
+#             return render(request,"applicantForm.html",{'form':form})
