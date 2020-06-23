@@ -35,6 +35,8 @@ def login_view(request):
                     return redirect("/appl_form/")
                 elif "User" in user_groups:
                     return redirect("/")
+                elif "Contabilidad" in user_groups:
+                    return redirect("/")
             else:    
                 msg = 'Invalid credentials'    
         else:
