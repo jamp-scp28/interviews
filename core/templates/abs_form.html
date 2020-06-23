@@ -55,8 +55,14 @@
 <script>
     $(document).ready(function() {
     $('#selectemp').select2({ placeholder: "Select here", maximumSelectionSize: 100  });
-    $( "#datepicker" ).datetimepicker({format:'Y-m-d H:m:s'});
-    $( "#datepicker2" ).datetimepicker({format:'Y-m-d H:m:s'});
+    $( "#datepicker" ).datetimepicker({
+        format:'Y-m-d H:m:s',
+        step: 15
+        });
+    $( "#datepicker2" ).datetimepicker({
+        format:'Y-m-d H:m:s',
+        step: 15
+        });
     });
     
 </script>
