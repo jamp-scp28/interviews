@@ -48,7 +48,7 @@
               </tr>
             </thead>
             <tbody>
-                {% for int in addint_list %}
+                {% for int in addint_list|dictsortreversed:"dated" %}
                     <tr>
                         <td>{{int.employee.fullname}}</td>
                         <td>{{int.employee.identification}}</td>
