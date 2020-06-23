@@ -52,7 +52,10 @@
 <script>
     $(document).ready(function() {
     $('#selectemp4').select2({ placeholder: "Select here", maximumSelectionSize: 100  });
-    $( "#datepicker4" ).datetimepicker();
+    $( "#datepicker4" ).datetimepicker({
+        format:'Y-m-d H:m:s',
+        step: 15
+        });
     });
     
 </script>
