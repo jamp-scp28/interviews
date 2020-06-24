@@ -46,7 +46,11 @@
 {% block javascripts %}
 <script>
     $(document).ready(function() {
-    $( "#datepicker" ).datetimepicker();
+    $( "#datepicker" ).datetimepicker({
+        format:'Y-m-d H:i:s',
+        step: 15,
+        pickTime: true,
+        });
     });
     
 </script>

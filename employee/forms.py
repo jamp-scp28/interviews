@@ -49,5 +49,5 @@ class EmployeeForm(forms.ModelForm):
         self.fields['department'].widget.attrs.update({'class': 'form-dropdown'})
         self.fields['identification'].required = False
         self.fields['doi'].widget.attrs.update({'class': 'form-control','id':'datepicker'})
-        self.fields['doi'].input_formats=['%Y-%m-%d %H:%M']
+        self.fields['doi'].input_formats=['%Y-%m-%d %H:%M:%S']
 
