@@ -25,7 +25,7 @@
           {% endif %}
           {% if request.user|has_group:"Contabilidad" %}
           <li class="active ">
-            <a href="/appl_list">
+            <a href="/test_list">
               <i class="tim-icons icon-chart-pie-36"></i>
               <p>Lista de Pruebas</p>
             </a>
@@ -58,6 +58,14 @@
               <p>Realizar Entrevista</p>
             </a>
           </li>
+          {% if request.user|has_group:"Contabilidad" %}
+            <li class="active ">
+              <a href="/test_form">
+                <i class="tim-icons icon-chart-pie-36"></i>
+                <p>Realizar Prueba</p>
+              </a>
+            </li>
+          {% endif %}
           <li>
             <a href="/int_list">
               <i class="tim-icons icon-align-center"></i>
