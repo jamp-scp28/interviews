@@ -50,7 +50,7 @@ def test_list(request):
     #     qs = Applicant.objects.all()
     # else:
     #     qs = Applicant.objects.filter(interviewer=request.user)
-    context = {'appl_list': appTest.objects.all()}
+    context = {'test_list': appTest.objects.all()}
     return render(request, "test_list.html", context)
 
 

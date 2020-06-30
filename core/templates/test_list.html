@@ -111,29 +111,75 @@
                   ASPIRANTE
                 </th>
                 <th>
-                  IDENTIFICACION
+                  ¿Qué es la partida doble?
                 </th>
                 <th>
-                  FECHA DE CARGUE
+                  ¿Las máquinas son?
+                  <br>
+                  Activos_circulantes = 'AC'
+                  <br>
+                  Activos_fijos = 'AF'
+                  <br>
+                  Pasivos_fijos = 'PF'
+                  <br>
+                  Pasivos_Circulantes = 'PC'
                 </th>
                 <th>
-                  LINK DE PRUEBA
+                  Un Anticipo a un Empleado, se ubica en
+                  <br>
+                  Pasivo_corriente = 'PC'
+                  <br>
+                  activo_exigible = 'AE'
+                  <br>
+                  activo_realizable = 'AR'
+                  <br>
+                  activo_diferido = 'AD'
+                </th>
+                <th>
+                  Explique la diferencia entre el capital de trabajo y el efectivo disponible.
+                </th>
+                <th>
+                  Factura de Venta
+                  <br>
+                  img1 = 'PC'
+                  <br>
+                  img2 = 'AE'
+                  <br>
+                  img3 = 'AR'
+                  <br>
+                  Ninguna = 'AD'
+                </th>
+                <th>
+                  Justificacion.
+                </th>
+                <th>
+                  Factura de Compra
+                  <br>
+                  img1 = 'PC'
+                  <br>
+                  img2 = 'AE'
+                  <br>
+                  img3 = 'AR'
+                  <br>
+                  Ninguna = 'AD'
+                </th>
+                <th>
+                  Justificacion.
                 </th>
               </tr>
             </thead>
             <tbody>
-                {% for appl in appl_list %}
+                {% for appl in test_list %}
                     <tr>
-                        <td>{{appl.name}}</td>
-                        <td>{{appl.cc}}</td>
-                        <td>{{appl.created_at}}</td>
-                        {%if appl.document.url and appl.document.name%}
-                          <td>
-                            <a href="{{appl.document.url}}" class="btn text-secondary px-0">
-                              <i class="">{{appl.document.name}}</i>
-                            </a>
-                          </td>
-                        {%endif%}
+                        <td>{{appl.apprentice}}</td>
+                        <td>{{appl.question1}}</td>
+                        <td>{{appl.question2}}</td>
+                        <td>{{appl.question3}}</td>
+                        <td>{{appl.question4}}</td>
+                        <td>{{appl.question5}}</td>
+                        <td>{{appl.just5}}</td>
+                        <td>{{appl.question6 }}</td>
+                        <td>{{appl.just6}}</td>
                     </tr>
                 {% endfor %}
             </tbody>
