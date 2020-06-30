@@ -19,19 +19,47 @@ class ApplicantForm(forms.ModelForm):
         self.fields['document'].widget.attrs.update({'type': 'file'})
 
 class appTestForm(forms.ModelForm):
+    apprentice = forms.CharField(
+        widget=forms.TextInput(
+            attrs={  
+                "class": "form-control"
+            }
+        ))
+    identification = forms.IntegerField(
+        widget=forms.NumberInput(
+            attrs={  
+                "class": "form-control"
+            }
+        ))
+    question1 = forms.CharField(
+        widget=forms.Textarea(
+            attrs={  
+                "class": "form-control"
+            }
+        ))
+    question4 = forms.CharField(
+        widget=forms.Textarea(
+            attrs={  
+                "class": "form-control"
+            }
+        ))
     class Meta:
         model = appTest
-        fields = ('apprentice','question1','question2','question3','question4','question5','question6',)
+        fields = ('apprentice','identification','question1','question2','question3','question4','question5','question6',)
         labels = {
             'apprentice': 'Aprendiz',
-            'question1': 'Pregunta 1',
-            'question2': 'Pregunta 2',
-            'question3': 'Pregunta 3',
-            'question4': 'Pregunta 4',
+            'identification': 'No. de Identificacion',
+            'question1': '¿Qué es la partida doble?',
+            'question2': '¿Las máquinas son?',
+            'question3': 'Un Anticipo a un Empleado, se ubica en',
+            'question4': 'Explique la diferencia entre el capital de trabajo y el efectivo disponible.',
             'question5': 'Pregunta 5',
             'question6': 'Pregunta 6'
         }
     def __init__(self,*args, **kwargs):
         super(appTestForm, self).__init__(*args, **kwargs)
-        self.fields['apprentice'].widget.attrs.update({'class': 'form-dropdown', 'id':'selectemp'})
+        self.fields['question2'].widget.attrs.update({'class': 'form-dropdown'})
+        self.fields['question3'].widget.attrs.update({'class': 'form-dropdown'})
+        self.fields['question5'].widget.attrs.update({'class': 'form-dropdown'})
+        self.fields['question6'].widget.attrs.update({'class': 'form-dropdown'})
         #self.fields['question1'].widget.attrs.update({'class': 'form-control'})

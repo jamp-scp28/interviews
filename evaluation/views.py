@@ -54,7 +54,6 @@ def test_list(request):
     return render(request, "test_list.html", context)
 
 
-@login_required(login_url="/login/")
 def test_form(request, id=0):
     if request.method == "GET":
         if id == 0:
@@ -74,6 +73,6 @@ def test_form(request, id=0):
             form = appTestForm(request.POST,instance= interview)
         if form.is_valid():
             form.save()
-            return redirect('/test_list')
+            return HttpResponse('Hemos recibido sus respuestas, muchas gracias!')
         else:
             return render(request,"test_form.html",{'form':form})
