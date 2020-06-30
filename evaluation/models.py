@@ -75,11 +75,13 @@ class appTest(models.Model):
         choices=IMAGEN1,
         default=Activos_circulantes,
     )
+    just5 = models.CharField(max_length=1000,blank=True, null=True)
     question6 = models.CharField(
         max_length=2,
         choices=IMAGEN2,
         default=Activos_circulantes,
     )
+    just6 = models.CharField(max_length=1000,blank=True, null=True)
     created_at = models.DateTimeField(default=timezone.now())
 
     def __str__(self):

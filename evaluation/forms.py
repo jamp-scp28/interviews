@@ -43,6 +43,18 @@ class appTestForm(forms.ModelForm):
                 "class": "form-control"
             }
         ))
+    just5 = forms.CharField(
+        widget=forms.Textarea(
+            attrs={  
+                "class": "form-control"
+            }
+        ))
+    just6 = forms.CharField(
+        widget=forms.Textarea(
+            attrs={  
+                "class": "form-control"
+            }
+        ))
     class Meta:
         model = appTest
         fields = ('apprentice','identification','question1','question2','question3','question4','question5','question6',)
