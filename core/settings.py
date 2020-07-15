@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'app',  # Enable the inner app 
     'import_export',
     'interview',
+    'hhrr',
     'django_filters',
     'employee',
     'addint',

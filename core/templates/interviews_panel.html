@@ -1,34 +1,20 @@
+{% extends "layouts/base.html" %}
 
-    {% load auth_extras %}
+{% block title %} Dashboard {% endblock %} 
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% load auth_extras %}
+
+{% block content %}
+
     <div class="sidebar">
       <div class="sidebar-wrapper">
-        
-        <div class="logo">
-          <a target="_blank" href="" class="simple-text logo-mini">
-            BD
-          </a>
-          <a target="_blank" href="" class="simple-text logo-normal">
-            RRHH
-          </a>
-        </div>
 
         {% if user.is_authenticated %}
         
         <ul class="nav">
-          {% if request.user|has_group:"Contracts" or request.user.is_staff %}
-          <li class="active ">
-            <a href="/ctr_list">
-              <i class="tim-icons icon-chart-pie-36"></i>
-              <p>Lista de Contratos</p>
-            </a>
-          </li>
-          <li class="active ">
-            <a href="/ctr_form">
-              <i class="tim-icons icon-chart-pie-36"></i>
-              <p>Registro de Contratos</p>
-            </a>
-          </li>
-          {% endif %}
           {% if request.user|has_group:"Aprendiz" %}
           <li class="active ">
             <a href="/appl_form">
@@ -92,3 +78,18 @@
         
       </div>
     </div>
+      
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+
+  <script>
+    $(document).ready(function() {
+      // Javascript method's body can be found in assets/js/demos.js
+      demo.initDashboardPageCharts();
+
+    });
+  </script>
+
+{% endblock javascripts %}

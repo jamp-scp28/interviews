@@ -17,8 +17,9 @@ urlpatterns = [
     path("", include('employee.urls')),
     path("", include('interview.urls')),
     path("", include('evaluation.urls')),
-    
+    path("", include('hhrr.urls'))
 ]
+
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
